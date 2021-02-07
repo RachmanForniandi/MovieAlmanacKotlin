@@ -15,24 +15,36 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested_scroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_main_movie"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/pgNext">
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_main"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"/>
+    <!--<androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_main_movie"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:nestedScrollingEnabled="false"
             tools:listitem="@layout/item_main"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:itemCount="2"/>
 
-    </androidx.core.widget.NestedScrollView>
-    <ProgressBar
+    </androidx.core.widget.NestedScrollView>-->
+    <!--<ProgressBar
         android:id="@+id/pgNext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -40,6 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

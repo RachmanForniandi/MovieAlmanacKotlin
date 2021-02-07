@@ -41,6 +41,12 @@ class MainAdapter (var movies: ArrayList<MovieModel>):
         return movies.size
     }
 
+    fun setData(newMovies:List<MovieModel>){
+        movies.clear()
+        movies.addAll(newMovies)
+        notifyDataSetChanged()
+    }
+
     /*interface OnClickListener {
 
     }*/
