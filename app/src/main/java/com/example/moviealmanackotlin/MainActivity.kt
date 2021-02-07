@@ -3,6 +3,7 @@ package com.example.moviealmanackotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.moviealmanackotlin.adapters.MainAdapter
 import com.example.moviealmanackotlin.models.Constant
 import com.example.moviealmanackotlin.models.MovieResponse
 import com.example.moviealmanackotlin.networkUtils.NetworkConfig
@@ -12,6 +13,8 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private val TAG: String ="MainActivity"
+
+    lateinit var mainAdapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
