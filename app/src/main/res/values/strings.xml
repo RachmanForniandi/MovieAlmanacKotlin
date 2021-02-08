@@ -3,4 +3,6 @@
     <string name="icon_app">icon App</string>
     <string name="review_and_trailer">Review and Trailer</string>
     <string name="movie_almanac">Movie Almanac</string>
+    <string name="popular">Popular</string>
+    <string name="now_playing">Now Playing</string>
 </resources>
