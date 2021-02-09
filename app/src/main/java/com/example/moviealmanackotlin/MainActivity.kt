@@ -9,9 +9,11 @@ import android.view.View
 import android.widget.Toast
 import com.example.moviealmanackotlin.adapters.MainAdapter
 import com.example.moviealmanackotlin.models.Constant
+import com.example.moviealmanackotlin.models.MovieModel
 import com.example.moviealmanackotlin.models.MovieResponse
 import com.example.moviealmanackotlin.networkUtils.NetworkConfig
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,12 +24,13 @@ class MainActivity : AppCompatActivity() {
     private val TAG: String ="MainActivity"
 
     lateinit var mainAdapter: MainAdapter
-    private val movieCategory =0
+    private var movieCategory =0
     private val api = NetworkConfig().endPointService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar_main)
         showAdapterMovie()
         getDataMovie()
     }
@@ -38,17 +41,31 @@ class MainActivity : AppCompatActivity() {
     }*/
 
     private fun showAdapterMovie() {
-        mainAdapter = MainAdapter(arrayListOf())
+        mainAdapter = MainAdapter(arrayListOf(),object : MainAdapter.OnClickListener{
+            override fun onClick(movieModel: MovieModel) {
+                movieModel.title?.let { showMessage(it) }
+            }
+
+        })
         list_main_movie.apply {
             //layoutManager = GridLayoutManager(context,2)
             adapter = mainAdapter
         }
+
     }
 
     private fun getDataMovie() {
         showLoading(true)
-        NetworkConfig().endPointService.getMoviesNowPlaying(Constant.API_KEY,1)
-                .enqueue(object :Callback<MovieResponse>{
+        var apiCall:Call<MovieResponse>? = null
+        when(movieCategory){
+            moviePopular ->{
+                apiCall = api.getMoviesPopular(Constant.API_KEY,1)
+            }
+            movieNowPlaying ->{
+                apiCall = api.getMoviesNowPlaying(Constant.API_KEY,1)
+            }
+        }
+        apiCall?.enqueue(object :Callback<MovieResponse>{
                     override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                         showLoading(false)
                         if (response.isSuccessful){
@@ -90,11 +107,15 @@ class MainActivity : AppCompatActivity() {
         return when(item.itemId){
             R.id.action_popular ->{
                 showMessage("Popular Movie Selected")
+                movieCategory = moviePopular
+                getDataMovie()
                 true
             }
 
             R.id.action_now_playing ->{
                 showMessage("Now Playing Movie Selected")
+                movieCategory = movieNowPlaying
+                getDataMovie()
                 true
             }
             else -> super.onOptionsItemSelected(item)

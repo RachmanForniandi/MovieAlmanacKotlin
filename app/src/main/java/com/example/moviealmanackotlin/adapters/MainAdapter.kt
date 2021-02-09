@@ -12,8 +12,7 @@ import com.example.moviealmanackotlin.supports.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_main.view.*
 
-class MainAdapter (var movies: ArrayList<MovieModel>):
-        RecyclerView.Adapter<MainAdapter.MovieHolder>(){
+class MainAdapter (var movies: ArrayList<MovieModel>, var clickListener:OnClickListener): RecyclerView.Adapter<MainAdapter.MovieHolder>(){
 
     private val TAG: String ="MainActivity"
 
@@ -39,6 +38,10 @@ class MainAdapter (var movies: ArrayList<MovieModel>):
                 .error(R.drawable.placeholder_portrait)
                 .into(holder.imgPosterMovie)
 
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(item)
+        }
+
     }
 
     inner class MovieHolder (view: View):RecyclerView.ViewHolder(view){
@@ -46,6 +49,7 @@ class MainAdapter (var movies: ArrayList<MovieModel>):
         val languageMovie = view.txt_language_movie
         val releaseDateMovie = view.txt_release_date_movie
         val imgPosterMovie = view.img_Poster
+
 
     }
 
@@ -59,9 +63,9 @@ class MainAdapter (var movies: ArrayList<MovieModel>):
         notifyDataSetChanged()
     }
 
-    /*interface OnClickListener {
-
-    }*/
+    interface OnClickListener {
+        fun onClick(movieModel: MovieModel)
+    }
 }
 
 
