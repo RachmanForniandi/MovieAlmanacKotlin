@@ -14,6 +14,7 @@ import com.example.moviealmanackotlin.models.MovieResponse
 import com.example.moviealmanackotlin.networkUtils.NetworkConfig
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +22,7 @@ import retrofit2.Response
 const val moviePopular =0
 const val movieNowPlaying =1
 class MainActivity : AppCompatActivity() {
+
     private val TAG: String ="MainActivity"
 
     lateinit var mainAdapter: MainAdapter
@@ -43,7 +45,10 @@ class MainActivity : AppCompatActivity() {
     private fun showAdapterMovie() {
         mainAdapter = MainAdapter(arrayListOf(),object : MainAdapter.OnClickListener{
             override fun onClick(movieModel: MovieModel) {
-                movieModel.title?.let { showMessage(it) }
+                //movieModel.title?.let { showMessage(it) }
+                Constant.MOVIE_ID = movieModel.id
+                Constant.MOVIE_TITLE = movieModel.title
+                startActivity<DetailMovieActivity>()
             }
 
         })

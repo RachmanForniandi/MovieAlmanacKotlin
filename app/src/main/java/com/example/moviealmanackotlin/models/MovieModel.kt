@@ -3,8 +3,8 @@ package com.example.moviealmanackotlin.models
 import com.google.gson.annotations.SerializedName
 
 data class MovieModel(
-        @SerializedName("id") val id:Int?,
-        @SerializedName("title") val title:String?,
+        @SerializedName("id") val id:Int,
+        @SerializedName("title") val title:String,
     //@SerializedName("vote_average") val vote_average:Double?,
         @SerializedName("vote_count") val vote_count:Int?,
         @SerializedName("original_language") val original_language:String?,
