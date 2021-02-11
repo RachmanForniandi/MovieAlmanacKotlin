@@ -96,4 +96,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="putar_trailer">Putar Trailer</string>
+    <string name="overview">Overview</string>
+    <string name="image_backdrop_path">image backdrop path</string>
 </resources>
