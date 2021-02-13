@@ -12,6 +12,7 @@ import com.example.moviealmanackotlin.networkUtils.NetworkConfig
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.content_detail.*
+import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,12 +25,19 @@ class DetailMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_movie)
         setupView()
+        setupToDetailTrailer()
 
         /*findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }*/
 
+    }
+
+    private fun setupToDetailTrailer() {
+        fab_play.setOnClickListener {
+           startActivity<TrailerActivity>()
+        }
     }
 
     override fun onStart() {
