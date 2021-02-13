@@ -1,4 +1,4 @@
-package com.example.moviealmanackotlin
+package com.example.moviealmanackotlin.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.example.moviealmanackotlin.R
 import com.example.moviealmanackotlin.adapters.MainAdapter
 import com.example.moviealmanackotlin.models.Constant
 import com.example.moviealmanackotlin.models.MovieModel

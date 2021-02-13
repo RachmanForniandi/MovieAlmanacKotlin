@@ -1,8 +1,8 @@
-package com.example.moviealmanackotlin
+package com.example.moviealmanackotlin.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
+import com.example.moviealmanackotlin.R
 import org.jetbrains.anko.startActivity
 import java.util.*
 import kotlin.concurrent.schedule
@@ -14,7 +14,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         supportActionBar!!.hide()
         Timer("splashGone", true).schedule(3000) {
-            startActivity<MainActivity>()
+            startActivity<HomeActivity>()
             finish()
         }
     }

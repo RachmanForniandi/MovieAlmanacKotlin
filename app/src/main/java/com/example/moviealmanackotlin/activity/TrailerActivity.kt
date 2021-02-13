@@ -1,10 +1,11 @@
-package com.example.moviealmanackotlin
+package com.example.moviealmanackotlin.activity
 
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.moviealmanackotlin.R
 import com.example.moviealmanackotlin.adapters.TrailerAdapter
 import com.example.moviealmanackotlin.models.Constant
 import com.example.moviealmanackotlin.models.TrailerResponse
@@ -12,7 +13,6 @@ import com.example.moviealmanackotlin.networkUtils.NetworkConfig
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import kotlinx.android.synthetic.main.activity_trailer.*
-import kotlinx.android.synthetic.main.content_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
