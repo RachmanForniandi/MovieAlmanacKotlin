@@ -2,6 +2,7 @@ package com.example.moviealmanackotlin.networkUtils
 
 import com.example.moviealmanackotlin.models.DetailMovieResponse
 import com.example.moviealmanackotlin.models.MovieResponse
+import com.example.moviealmanackotlin.models.PopularResponse
 import com.example.moviealmanackotlin.models.TrailerResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -20,7 +21,7 @@ interface EndPointService {
     fun getMoviesPopular(
         @Query("api_key")api_key:String,
         @Query("page")page:Int
-    ): Call<MovieResponse>
+    ): Call<PopularResponse>
 
     @GET("movie/{movie_id}")
     fun getMoviesDetail(
