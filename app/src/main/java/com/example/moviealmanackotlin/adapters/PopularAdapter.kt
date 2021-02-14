@@ -7,24 +7,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviealmanackotlin.R
 import com.example.moviealmanackotlin.models.Constant
-import com.example.moviealmanackotlin.models.MovieModel
+import com.example.moviealmanackotlin.models.MoviePopularModel
 import com.example.moviealmanackotlin.supports.getStringDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_main.view.*
 
-class MainAdapter (var movies: ArrayList<MovieModel>, var clickListener:OnClickListener): RecyclerView.Adapter<MainAdapter.MovieHolder>(){
+class PopularAdapter  (var movies: ArrayList<MoviePopularModel>, var clickListener: OnClickListener): RecyclerView.Adapter<PopularAdapter.PopularHolder>() {
 
     private val TAG: String ="MainActivity"
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main,parent,false)
-        return MovieHolder(view)
+        return PopularHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MovieHolder, position: Int) {
+    override fun onBindViewHolder(holder: PopularHolder, position: Int) {
         val item = movies[position]
 
-        val formatDateRelease= item.release_date.let {  getStringDate(it)}
+        val formatDateRelease= item.first_air_date.let { it?.let { it1 -> getStringDate(it1) } }
 
         holder.titleMovie.text = item.title
         holder.languageMovie.text = item.original_language
@@ -44,7 +44,7 @@ class MainAdapter (var movies: ArrayList<MovieModel>, var clickListener:OnClickL
 
     }
 
-    inner class MovieHolder (view: View):RecyclerView.ViewHolder(view){
+    inner class PopularHolder (view: View):RecyclerView.ViewHolder(view){
         val titleMovie = view.txt_title_movie
         val languageMovie = view.txt_language_movie
         val releaseDateMovie = view.txt_release_date_movie
@@ -57,20 +57,18 @@ class MainAdapter (var movies: ArrayList<MovieModel>, var clickListener:OnClickL
         return movies.size
     }
 
-    fun setData(newMovies:List<MovieModel>){
+    fun setData(popularMovies:List<MoviePopularModel>){
         movies.clear()
-        movies.addAll(newMovies)
+        movies.addAll(popularMovies)
         notifyDataSetChanged()
     }
 
-    fun setDataNext(newMovies:List<MovieModel>){
-        movies.addAll(newMovies)
+    fun setDataNext(popularMovies:List<MoviePopularModel>){
+        movies.addAll(popularMovies)
         notifyDataSetChanged()
     }
 
     interface OnClickListener {
-        fun onClick(movieModel: MovieModel)
+        fun onClick(movieModel: MoviePopularModel)
     }
 }
-
-

@@ -34,6 +34,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             tools:text="Captain America"
+            android:maxLines="3"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/img_Poster"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +51,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/img_Poster"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
         <TextView
             android:id="@+id/txt_release_date_movie"
@@ -61,6 +63,7 @@
             tools:text="dd/MM/YYYY"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/txt_title_movie"
+            app:layout_constraintEnd_toStartOf="@id/txt_language_movie"
             app:layout_constraintStart_toStartOf="parent"
             />
 
